@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25B413CD1AD627A700CBCB79 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B413CC1AD627A700CBCB79 /* MovieDetailViewController.swift */; };
+		25B413CE1AD6360E00CBCB79 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CE34DA1AD5FF5B001F796A /* MoviesViewController.swift */; };
 		25CE34BB1AD5F876001F796A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CE34BA1AD5F876001F796A /* AppDelegate.swift */; };
 		25CE34BD1AD5F876001F796A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CE34BC1AD5F876001F796A /* ViewController.swift */; };
 		25CE34C01AD5F876001F796A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25CE34BE1AD5F876001F796A /* Main.storyboard */; };
 		25CE34C21AD5F876001F796A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25CE34C11AD5F876001F796A /* Images.xcassets */; };
 		25CE34C51AD5F876001F796A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25CE34C31AD5F876001F796A /* LaunchScreen.xib */; };
 		25CE34D11AD5F876001F796A /* freshtomatoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CE34D01AD5F876001F796A /* freshtomatoTests.swift */; };
-		25CE34DB1AD5FF5B001F796A /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CE34DA1AD5FF5B001F796A /* MoviesViewController.swift */; };
+		25CE34DD1AD61409001F796A /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CE34DC1AD61409001F796A /* MovieCell.swift */; };
+		4335946AF7310F21FE969A12 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 547427C3C7F9E4E3A036D482 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		257A9B6C1AD6487D00E796D8 /* freshtomato-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "freshtomato-Bridging-Header.h"; sourceTree = "<group>"; };
+		25B413CC1AD627A700CBCB79 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		25CE34B51AD5F876001F796A /* freshtomato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = freshtomato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25CE34B91AD5F876001F796A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25CE34BA1AD5F876001F796A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +43,10 @@
 		25CE34CF1AD5F876001F796A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25CE34D01AD5F876001F796A /* freshtomatoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = freshtomatoTests.swift; sourceTree = "<group>"; };
 		25CE34DA1AD5FF5B001F796A /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
+		25CE34DC1AD61409001F796A /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		547427C3C7F9E4E3A036D482 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E253A299245677DE0205E76C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F8B0F8CAE7788834B2D0EE12 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4335946AF7310F21FE969A12 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +68,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21C36999724008A5E8C823A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F8B0F8CAE7788834B2D0EE12 /* Pods.debug.xcconfig */,
+				E253A299245677DE0205E76C /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		25CE34AC1AD5F876001F796A = {
 			isa = PBXGroup;
 			children = (
 				25CE34B71AD5F876001F796A /* freshtomato */,
 				25CE34CD1AD5F876001F796A /* freshtomatoTests */,
 				25CE34B61AD5F876001F796A /* Products */,
+				21C36999724008A5E8C823A0 /* Pods */,
+				A6C60E0C88C9DC38378B8645 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +107,9 @@
 				25CE34C31AD5F876001F796A /* LaunchScreen.xib */,
 				25CE34B81AD5F876001F796A /* Supporting Files */,
 				25CE34DA1AD5FF5B001F796A /* MoviesViewController.swift */,
+				25B413CC1AD627A700CBCB79 /* MovieDetailViewController.swift */,
+				25CE34DC1AD61409001F796A /* MovieCell.swift */,
+				257A9B6C1AD6487D00E796D8 /* freshtomato-Bridging-Header.h */,
 			);
 			path = freshtomato;
 			sourceTree = "<group>";
@@ -115,6 +139,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A6C60E0C88C9DC38378B8645 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				547427C3C7F9E4E3A036D482 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,9 +154,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 25CE34D41AD5F876001F796A /* Build configuration list for PBXNativeTarget "freshtomato" */;
 			buildPhases = (
+				4B1C478F3FAA6BFD521FE985 /* Check Pods Manifest.lock */,
 				25CE34B11AD5F876001F796A /* Sources */,
 				25CE34B21AD5F876001F796A /* Frameworks */,
 				25CE34B31AD5F876001F796A /* Resources */,
+				D8D1A700822C0FB6E177F1DD /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -210,14 +244,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4B1C478F3FAA6BFD521FE985 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D8D1A700822C0FB6E177F1DD /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		25CE34B11AD5F876001F796A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				25CE34BD1AD5F876001F796A /* ViewController.swift in Sources */,
+				25B413CE1AD6360E00CBCB79 /* MoviesViewController.swift in Sources */,
+				25B413CD1AD627A700CBCB79 /* MovieDetailViewController.swift in Sources */,
 				25CE34BB1AD5F876001F796A /* AppDelegate.swift in Sources */,
-				25CE34DB1AD5FF5B001F796A /* MoviesViewController.swift in Sources */,
+				25CE34DD1AD61409001F796A /* MovieCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,21 +407,28 @@
 		};
 		25CE34D51AD5F876001F796A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8B0F8CAE7788834B2D0EE12 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = freshtomato/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "freshtomato/freshtomato-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		25CE34D61AD5F876001F796A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E253A299245677DE0205E76C /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = freshtomato/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "freshtomato/freshtomato-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -409,6 +485,7 @@
 				25CE34D61AD5F876001F796A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		25CE34D71AD5F876001F796A /* Build configuration list for PBXNativeTarget "freshtomatoTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +494,7 @@
 				25CE34D91AD5F876001F796A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
