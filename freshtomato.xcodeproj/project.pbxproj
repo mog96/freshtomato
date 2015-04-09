@@ -13,6 +13,7 @@
 		25CE34C21AD5F876001F796A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25CE34C11AD5F876001F796A /* Images.xcassets */; };
 		25CE34C51AD5F876001F796A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25CE34C31AD5F876001F796A /* LaunchScreen.xib */; };
 		25CE34D11AD5F876001F796A /* freshtomatoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CE34D01AD5F876001F796A /* freshtomatoTests.swift */; };
+		25CE34DB1AD5FF5B001F796A /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CE34DA1AD5FF5B001F796A /* MoviesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		25CE34CA1AD5F876001F796A /* freshtomatoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = freshtomatoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25CE34CF1AD5F876001F796A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25CE34D01AD5F876001F796A /* freshtomatoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = freshtomatoTests.swift; sourceTree = "<group>"; };
+		25CE34DA1AD5FF5B001F796A /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				25CE34C11AD5F876001F796A /* Images.xcassets */,
 				25CE34C31AD5F876001F796A /* LaunchScreen.xib */,
 				25CE34B81AD5F876001F796A /* Supporting Files */,
+				25CE34DA1AD5FF5B001F796A /* MoviesViewController.swift */,
 			);
 			path = freshtomato;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			files = (
 				25CE34BD1AD5F876001F796A /* ViewController.swift in Sources */,
 				25CE34BB1AD5F876001F796A /* AppDelegate.swift in Sources */,
+				25CE34DB1AD5FF5B001F796A /* MoviesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
