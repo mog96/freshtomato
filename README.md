@@ -1,7 +1,7 @@
 ## freshtomato
 Movies app that displays box office and top rental DVDs using the [Rotten Tomatoes API](http://developer.rottentomatoes.com/docs/read/JSON).
 
-Time spent: `<Number of hours spent>`
+Time spent: 7 hours
 
 ### Features
 
@@ -24,10 +24,10 @@ Time spent: `<Number of hours spent>`
 - [ ] Add a search bar: pretty simple implementation of searching against the existing table view data.
 
 ### Walkthrough
-
+![alt tag](https://github.com/mog96/freshtomato/blob/master/Rotten%20Tomatoes%20User%20Stories.gif)
 
 Credits
 ---------
 * [Rotten Tomatoes API](http://developer.rottentomatoes.com/docs/read/JSON)
 * [AFNetworking](https://github.com/AFNetworking/AFNetworking)
-* [SVProgressHUD] (https://github.com/TransitApp/SVProgressHUD)
+* [SVProgressHUD](https://github.com/TransitApp/SVProgressHUD)
