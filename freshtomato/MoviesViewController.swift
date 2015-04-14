@@ -11,13 +11,17 @@ import UIKit
 class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // inherited class, followed by interfaces
     
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var errorView: UIView!
+    
     var movies: [NSDictionary]! = [NSDictionary]() // property; new array of NSDictionary
     var refreshControl: UIRefreshControl!
-
-    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.setBackgroundColor(UIColor.magentaColor())
+        
+        // let swiftColor = UIColor(red: 1, green: 165/255, blue: 0, alpha: 1)
         
         refreshData()
         
@@ -38,15 +42,21 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         var movie = movies[indexPath.row]
         
-        // should be: cell.movie = movie, and then let cell configure itself
+        // ideally, movie should be moved to cell, so it would be: cell.movie = movie, and then let cell configure itself
         
         cell.titleLabel.text = movie["title"] as? String
         cell.synopsisLabel.text = movie["synopsis"] as? String
         
         var url = movie.valueForKeyPath("posters.thumbnail") as? String // instead of unpacking nested dictionaries
-        var endIndex = advance(url!.endIndex, -7) // omit "tmb.jpg" at end
-        var hiresurl = url!.substringToIndex(endIndex) + "ori.jpg"
-        cell.posterView.setImageWithURL(NSURL(string: hiresurl)!)
+        
+        // var endIndex = advance(url!.endIndex, -7) // omit "tmb.jpg" at end; OLD WORKAROUND
+        // var hiresurl = url!.substringToIndex(endIndex) + "ori.jpg"
+        
+        var range = url!.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
+        if let range = range {
+            url = url!.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
+        }
+        cell.posterView.setImageWithURL(NSURL(string: url!)!)
         
 //        cell.titleLabel.text = "Where the Wild Things Are"
 //        cell.synopsisLabel.text = "Max (Max Records) is a young boy who feels misunderstood and wants to have fun all the time. He makes an igloo out of snow, but his sister's friends gang up on him and smash it. After making a scene in front of his mother's boyfriend, Max bites his mother and runs away. He keeps running until he stumbles upon a small boat; he climbs aboard and sets sail."
@@ -58,33 +68,30 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    func delay(delay:Double, closure:()->()) {
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(delay * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), closure)
-    }
-    
     func refreshData() {
+        SVProgressHUD.show()
+        
         var clientID = "nxu96vjy2huu9g3vd3kjfd2g"
         var url = NSURL(string: "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=\(clientID)")!
         var request = NSURLRequest(URL: url)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-            var json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as! NSDictionary
+            if (error != nil) {
+                self.errorView.hidden = false
+            } else {
+                self.errorView.hidden = true
+                var json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as! NSDictionary
             
-            self.movies = json["movies"] as! [NSDictionary]
-            self.tableView.reloadData()
+                self.movies = json["movies"] as! [NSDictionary]
+                self.tableView.reloadData()
+            }
         }
+        
+        SVProgressHUD.dismiss()
     }
     
     func onRefresh() {
         refreshData()
         refreshControl.endRefreshing()
-//        delay(2, closure: {
-//            self.refreshControl.endRefreshing()
-//        })
     }
 
     override func didReceiveMemoryWarning() {

@@ -10,22 +10,34 @@ import UIKit
 
 class MovieDetailViewController: UIViewController {
     
-    var movie: NSDictionary!
-
+    @IBOutlet weak var movieDetailScrollView: UIScrollView!
+    @IBOutlet weak var descriptionView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var synopsisLabel: UILabel!
     @IBOutlet weak var posterView: UIImageView!
     
+    var movie: NSDictionary!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        SVProgressHUD.show()
+        
         titleLabel.text = movie["title"] as? String
         synopsisLabel.text = movie["synopsis"] as? String
-//        var url = movie.valueForKeyPath("posters.thumbnail") as? String // instead of unpacking nested dictionaries
-//        var endIndex = advance(url!.endIndex, -7) // omit "tmb.jpg" at end
-//        var hiresurl = url!.substringToIndex(endIndex) + "ori.jpg"
-//        cell.posterView.setImageWithURL(NSURL(string: hiresurl)!)
+        
+        synopsisLabel.sizeToFit()
+        descriptionView.sizeToFit()
+        movieDetailScrollView.contentSize = synopsisLabel.frame.size
+        
+        var url = movie.valueForKeyPath("posters.thumbnail") as? String
+        var range = url!.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
+        if let range = range {
+            url = url!.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
+        }
+        posterView.setImageWithURL(NSURL(string: url!)!)
+        
+        SVProgressHUD.dismiss()
     }
 
     override func didReceiveMemoryWarning() {
