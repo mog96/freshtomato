@@ -19,24 +19,14 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var url = NSURL(string: "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=nxu96vjy2huu9g3vd3kjfd2g")!
-        var request = NSURLRequest(URL: url)
-        
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-            var json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
-            
-            self.movies = json["movies"] as [NSDictionary]
-            self.tableView.reloadData()
-        }
+        refreshData()
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        /* START HERE!!! */
-        
-//        refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
-//        scrollView.insertSubview(refreshControl, atIndex: 0)
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,7 +34,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as MovieCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
         
         var movie = movies[indexPath.row]
         
@@ -77,10 +67,24 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             dispatch_get_main_queue(), closure)
     }
     
+    func refreshData() {
+        var clientID = "nxu96vjy2huu9g3vd3kjfd2g"
+        var url = NSURL(string: "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=\(clientID)")!
+        var request = NSURLRequest(URL: url)
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            var json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as! NSDictionary
+            
+            self.movies = json["movies"] as! [NSDictionary]
+            self.tableView.reloadData()
+        }
+    }
+    
     func onRefresh() {
-        delay(2, closure: {
-            self.refreshControl.endRefreshing()
-        })
+        refreshData()
+        refreshControl.endRefreshing()
+//        delay(2, closure: {
+//            self.refreshControl.endRefreshing()
+//        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,8 +93,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var movieDetailViewController = segue.destinationViewController as MovieDetailViewController
-        var cell = sender as UITableViewCell
+        var movieDetailViewController = segue.destinationViewController as! MovieDetailViewController
+        var cell = sender as! UITableViewCell
         var indexPath = tableView.indexPathForCell(cell)!
         movieDetailViewController.movie = movies[indexPath.row]
     }
